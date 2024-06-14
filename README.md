@@ -33,11 +33,21 @@ Follow these steps to execute the project:
       ```
 
 4. **View Row Changes**:
-    - Check the table in the H2 database. The specific row should have `version: 10`, indicating 10 saves/updates ()
+    - Check the table in the H2 database. The specific row should have `version: 10`, indicating 10 saves/updates (Total number of threads executed in the method)
 
 ## Explanation of the Problem
 
 ### What is Happening?
 
 Different threads or pods are updating the same rows simultaneously. In a scenario where different queues and messages end up updating a specific row in a table in a multi-pod/thread environment, this can cause an error similar to:
+
+### What is the Solution?
+
+The @Retryable annotation in Java, particularly with Spring, indicates that a method should be re-executed if specific exceptions occur. The retryFor property specifies which exceptions trigger retries, such as OptimisticLockException. The maxAttempts property defines the maximum number of retries, enhancing the application's resilience by handling transient failures gracefully.
+
+
+
+
+
+
 
