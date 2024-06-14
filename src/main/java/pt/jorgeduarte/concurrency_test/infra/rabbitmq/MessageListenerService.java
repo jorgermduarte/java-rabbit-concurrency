@@ -20,16 +20,6 @@ public class MessageListenerService {
         this.personUseCaseService = personUseCaseService;
     }
 
-    @RabbitListener(queues = "dataQueue1")
-    public void receiveMessageFromQueue1(String message) {
-        try {
-            Person person = objectMapper.readValue(message, Person.class);
-            personUseCaseService.processCreateUpdatePerson(person);
-        } catch (Exception e) {
-            System.err.println("Error processing message: " + e.getMessage());
-        }
-    }
-
     @RabbitListener(queues = "dataQueue2")
     public void receiveMessageFromQueue2(String message) {
         try {

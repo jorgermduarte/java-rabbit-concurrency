@@ -29,7 +29,7 @@ public class QueueSeeder implements CommandLineRunner {
             Person person = new Person();
             person.setName("Person " + i);
             person.setAge(new Random().nextInt(100));
-            sendPersonMessage("dataQueue1", person);
+            sendPersonMessage("dataQueue2", person);
         }
     }
 }
